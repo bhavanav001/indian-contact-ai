@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile — Indian Contract AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-root"></div>
+
+<div class="container section" style="max-width: 560px;">
+
+    <h2 style="font-size:26px; font-weight:800; margin-bottom:24px;">My Profile</h2>
+
+    <div class="card card-padded mb-24">
+        <div class="flex gap-16 mb-24" style="align-items:center;">
+            <div class="avatar-circle" style="width:60px; height:60px; font-size:22px;" id="profile-avatar">–</div>
+            <div>
+                <div id="profile-name" style="font-size:19px; font-weight:700;">–</div>
+                <div id="profile-email" style="font-size:14px; color:var(--text-muted);">–</div>
+            </div>
+        </div>
+
+        <div style="border-top:1px solid var(--border); padding-top:20px;">
+            <div class="flex-between" style="margin-bottom:14px;">
+                <span style="color:var(--text-muted); font-size:14px;">Total Uploaded Contracts</span>
+                <span id="profile-contract-count" style="font-weight:700; font-size:16px;">–</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit-alert" class="alert alert-success"></div>
+
+    <div class="flex gap-12">
+        <button class="btn btn-secondary" style="flex:1;" id="edit-profile-btn">Edit Profile</button>
+        <button class="btn btn-danger" style="flex:1;" onclick="logout()">Logout</button>
+    </div>
+
+</div>
+
+<div id="footer-root"></div>
+
+<script src="js/api.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

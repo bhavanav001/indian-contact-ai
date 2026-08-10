@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Contracts — Indian Contract AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-root"></div>
+
+<div class="container section">
+
+    <div class="flex-between mb-24" style="flex-wrap:wrap; gap:16px;">
+        <h2 style="font-size:26px; font-weight:800;">My Contracts</h2>
+        <a href="upload.html" class="btn btn-primary">+ Upload New Contract</a>
+    </div>
+
+    <!-- Search + filters -->
+    <div class="card card-padded mb-24">
+        <div class="flex gap-12" style="flex-wrap:wrap; align-items:center;">
+            <input type="text" id="search-input" class="form-input" placeholder="Search by contract name..." style="flex:1; min-width:220px;">
+            <div class="flex gap-8" id="filter-chips">
+                <button class="btn btn-secondary filter-btn active" data-filter="all">All</button>
+                <button class="btn btn-secondary filter-btn" data-filter="completed">Completed</button>
+                <button class="btn btn-secondary filter-btn" data-filter="processing">Processing</button>
+                <button class="btn btn-secondary filter-btn" data-filter="high-risk">High Risk</button>
+                <button class="btn btn-secondary filter-btn" data-filter="low-risk">Low Risk</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-state" class="loading-state">
+        <div class="spinner"></div>
+        <div style="color: var(--text-muted); font-size: 14px;">Loading your contracts...</div>
+    </div>
+
+    <div id="empty-state" class="empty-state" style="display:none;">
+        <div class="empty-state-icon">🔍</div>
+        <div style="font-weight:600; margin-bottom:6px;">No contracts match this view</div>
+        <div style="font-size:14px;">Try a different search term or filter.</div>
+    </div>
+
+    <div id="contracts-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:18px;"></div>
+
+</div>
+
+<div id="footer-root"></div>
+
+<script src="js/api.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/my-contracts.js"></script>
+</body>
+</html>

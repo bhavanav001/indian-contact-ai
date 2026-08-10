@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Contract — Indian Contract AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-root"></div>
+
+<div class="container section" style="max-width: 720px;">
+
+    <h2 style="font-size:26px; font-weight:800; margin-bottom:6px;">Upload a Contract</h2>
+    <p style="color: var(--text-muted); font-size:14.5px; margin-bottom: 28px;">
+        We'll extract the text, split it into clauses, and check each one against Indian contract, GST, and DPDP law.
+    </p>
+
+    <div id="alert" class="alert alert-error"></div>
+
+    <div class="card card-padded">
+
+        <!-- Step 1: picker -->
+        <div id="upload-step">
+            <div id="dropzone" class="dropzone">
+                <div class="dropzone-icon">📄</div>
+                <div class="dropzone-title">Drag &amp; drop your contract here</div>
+                <div class="dropzone-sub">or click to browse — PDF or DOCX, up to 20MB</div>
+                <input type="file" id="file-input" accept=".pdf,.docx" style="display:none;">
+                <div id="file-chip-wrap"></div>
+            </div>
+
+            <button id="analyze-btn" class="btn btn-primary btn-lg btn-block" style="margin-top:24px;" disabled>
+                Analyze Contract
+            </button>
+        </div>
+
+        <!-- Step 2: uploading / processing -->
+        <div id="loading-step" class="loading-state" style="display:none;">
+            <div class="spinner"></div>
+            <div style="font-weight:600; margin-bottom:4px;">Analyzing your contract...</div>
+            <div style="color: var(--text-muted); font-size: 13.5px;" id="loading-sub">
+                Extracting text and checking clauses against Indian law. This can take a minute for longer contracts.
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="footer-root"></div>
+
+<script src="js/api.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/upload.js"></script>
+</body>
+</html>

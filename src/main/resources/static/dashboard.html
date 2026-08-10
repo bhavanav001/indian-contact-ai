@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Indian Contract AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-root"></div>
+
+<div class="container section">
+
+    <div class="flex-between mb-24" style="flex-wrap: wrap; gap: 16px;">
+        <div>
+            <h2 id="welcome-msg" style="font-size:26px; font-weight:800; margin-bottom:4px;">Hello,</h2>
+            <div style="color: var(--text-muted); font-size: 14.5px;">Here's what's happening with your contracts.</div>
+        </div>
+        <a href="upload.html" class="btn btn-primary btn-lg">+ Upload New Contract</a>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="stats-grid">
+        <div class="card stat-card">
+            <div class="stat-label">Total Contracts</div>
+            <div class="stat-value" id="stat-total">–</div>
+        </div>
+        <div class="card stat-card">
+            <div class="stat-label">Processing</div>
+            <div class="stat-value" id="stat-processing">–</div>
+        </div>
+        <div class="card stat-card">
+            <div class="stat-label">Completed</div>
+            <div class="stat-value" id="stat-completed">–</div>
+        </div>
+        <div class="card stat-card">
+            <div class="stat-label">Avg. Risk Score</div>
+            <div class="stat-value" id="stat-avg-risk">–</div>
+        </div>
+    </div>
+
+    <!-- Recent contracts -->
+    <div class="flex-between mb-16">
+        <h2 class="section-title" style="margin-bottom:0;">Recent Contracts</h2>
+        <a href="my-contracts.html" class="btn btn-ghost">View all →</a>
+    </div>
+
+    <div class="card">
+        <div id="loading-state" class="loading-state">
+            <div class="spinner"></div>
+            <div style="color: var(--text-muted); font-size: 14px;">Loading your contracts...</div>
+        </div>
+
+        <div id="empty-state" class="empty-state" style="display:none;">
+            <div class="empty-state-icon">📄</div>
+            <div style="font-weight:600; margin-bottom:6px;">No contracts yet</div>
+            <div style="font-size:14px; margin-bottom:20px;">Upload your first contract to get started with AI analysis.</div>
+            <a href="upload.html" class="btn btn-primary">Upload Contract</a>
+        </div>
+
+        <div id="table-wrap" class="table-wrap" style="display:none;">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>Contract Name</th>
+                    <th>Upload Date</th>
+                    <th>Status</th>
+                    <th>Legal Risk</th>
+                    <th>Regulatory Risk</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="contracts-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer-root"></div>
+
+<script src="js/api.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

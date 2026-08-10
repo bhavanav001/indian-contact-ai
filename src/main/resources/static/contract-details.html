@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Details — Indian Contract AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="navbar-root"></div>
+
+<div class="container section">
+
+    <!-- Header -->
+    <div class="mb-24">
+        <h2 id="contract-name" style="font-size:24px; font-weight:800; margin-bottom:6px;">Loading contract...</h2>
+        <div class="flex gap-12" style="align-items:center; flex-wrap:wrap;">
+            <span id="contract-date" style="color:var(--text-muted); font-size:13.5px;"></span>
+            <span id="contract-status-badge"></span>
+        </div>
+    </div>
+
+    <!-- Still processing state -->
+    <div id="processing-state" class="card loading-state" style="display:none;">
+        <div class="spinner"></div>
+        <div style="font-weight:600; margin-bottom:4px;">Analyzing your contract...</div>
+        <div style="color: var(--text-muted); font-size: 13.5px;">
+            Running clause-by-clause AI analysis against Indian contract, GST, and DPDP law. This page will update automatically.
+        </div>
+    </div>
+
+    <!-- Error state -->
+    <div id="error-state" class="card loading-state" style="display:none;">
+        <div style="font-size:32px; margin-bottom:10px;">⚠️</div>
+        <div style="font-weight:600; margin-bottom:4px; color:var(--red);">Analysis failed</div>
+        <div style="color: var(--text-muted); font-size: 13.5px;">Something went wrong while analyzing this contract. Try uploading it again.</div>
+    </div>
+
+    <!-- Main content (shown once status === done) -->
+    <div id="details-content" style="display:none;">
+
+        <!-- Risk summary -->
+        <div class="card card-padded mb-24">
+            <div class="flex" style="justify-content:space-around; flex-wrap:wrap; gap:32px; text-align:center;">
+                <div class="progress-ring-wrap">
+                    <svg width="120" height="120" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="52" fill="none" stroke="var(--bg-soft)" stroke-width="12"/>
+                        <circle id="legal-ring" cx="60" cy="60" r="52" fill="none" stroke="var(--navy)" stroke-width="12"
+                                stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"
+                                transform="rotate(-90 60 60)"/>
+                        <text id="legal-ring-text" x="60" y="66" text-anchor="middle" font-size="22" font-weight="800" fill="var(--text)">–</text>
+                    </svg>
+                    <div class="progress-ring-label">Legal Risk</div>
+                </div>
+                <div class="progress-ring-wrap">
+                    <svg width="120" height="120" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="52" fill="none" stroke="var(--bg-soft)" stroke-width="12"/>
+                        <circle id="reg-ring" cx="60" cy="60" r="52" fill="none" stroke="var(--navy)" stroke-width="12"
+                                stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"
+                                transform="rotate(-90 60 60)"/>
+                        <text id="reg-ring-text" x="60" y="66" text-anchor="middle" font-size="22" font-weight="800" fill="var(--text)">–</text>
+                    </svg>
+                    <div class="progress-ring-label">Regulatory Risk</div>
+                </div>
+                <div class="flex" style="flex-direction:column; justify-content:center; align-items:center;">
+                    <div style="font-size:36px; font-weight:800; color:var(--navy-dark);" id="total-clauses-num">–</div>
+                    <div class="progress-ring-label">Total Clauses</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="clauses">Clauses</button>
+            <button class="tab-btn" data-tab="compliance">Compliance</button>
+            <button class="tab-btn" data-tab="obligations">Obligations</button>
+            <button class="tab-btn" data-tab="chat">AI Chat</button>
+        </div>
+
+        <!-- Overview tab -->
+        <div class="tab-panel active" id="tab-overview">
+            <div class="card card-padded">
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; font-size:14.5px;">
+                    <div>
+                        <div style="color:var(--text-muted); font-size:12.5px; text-transform:uppercase; margin-bottom:4px;">Filename</div>
+                        <div id="ov-filename" style="font-weight:600;">–</div>
+                    </div>
+                    <div>
+                        <div style="color:var(--text-muted); font-size:12.5px; text-transform:uppercase; margin-bottom:4px;">Upload Date</div>
+                        <div id="ov-date" style="font-weight:600;">–</div>
+                    </div>
+                    <div>
+                        <div style="color:var(--text-muted); font-size:12.5px; text-transform:uppercase; margin-bottom:4px;">Status</div>
+                        <div id="ov-status" style="font-weight:600;">–</div>
+                    </div>
+                    <div>
+                        <div style="color:var(--text-muted); font-size:12.5px; text-transform:uppercase; margin-bottom:4px;">Total Clauses</div>
+                        <div id="ov-clauses" style="font-weight:600;">–</div>
+                    </div>
+                </div>
+                <div style="margin-top:24px;">
+                    <div style="color:var(--text-muted); font-size:12.5px; text-transform:uppercase; margin-bottom:8px;">Summary</div>
+                    <div id="ov-summary" style="font-size:14.5px; line-height:1.6;">
+                        This contract has been analyzed across <span id="ov-summary-clauses">–</span> clauses.
+                        <span id="ov-summary-flags">–</span> potential compliance issues were flagged against Indian law.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clauses tab -->
+        <div class="tab-panel" id="tab-clauses">
+            <div id="clauses-list"></div>
+        </div>
+
+        <!-- Compliance tab (built in next message) -->
+        <div class="tab-panel" id="tab-compliance">
+            <div id="compliance-list"></div>
+        </div>
+
+        <!-- Obligations tab (built in next message) -->
+        <div class="tab-panel" id="tab-obligations">
+            <div id="obligations-list"></div>
+        </div>
+
+        <!-- Chat tab (built in next message) -->
+        <div class="tab-panel" id="tab-chat">
+            <div class="card" id="chat-card"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="footer-root"></div>
+
+<script src="js/api.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/contract-details.js"></script>
+</body>
+</html>
