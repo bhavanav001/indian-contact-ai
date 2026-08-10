@@ -33,7 +33,7 @@ An AI-powered contract analysis system designed for Indian legal documents. The 
 | Security            | Spring Security, JWT            |
 | Frontend            | HTML5, CSS3, Vanilla JavaScript |
 | Database            | MySQL 8                         |
-| AI / NLP            | OpenAI API                      |
+| AI / NLP            | gemini api                 |
 | Document Processing | Apache Tika                     |
 | Rule Engine         | Custom Java Rule Engine         |
 | Data Access         | JPA / JDBC                      |
@@ -139,7 +139,7 @@ Make sure you have installed:
 * Maven
 * MySQL 8
 * Git
-* An OpenAI API key
+* An gemini API key
 
 ### 1. Clone the Repository
 
