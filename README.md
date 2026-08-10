@@ -10,7 +10,7 @@ An AI-powered contract analysis system designed for Indian legal documents. The 
 * Secure contract upload for PDF/DOCX documents
 * Contract text extraction using Apache Tika
 * Automatic clause extraction and analysis
-* AI-powered contract analysis using gmmini API
+* AI-powered contract analysis using gemini API
 * Contract summarization
 * Legal risk identification
 * India-specific regulatory compliance analysis
