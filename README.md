@@ -41,7 +41,6 @@ An AI-powered contract analysis system designed for Indian legal documents. The 
 
 ## System Architecture
 
-```text
 ┌─────────────────────────────────────┐
 │          Frontend                   │
 │      HTML / CSS / JavaScript        │
@@ -69,7 +68,6 @@ An AI-powered contract analysis system designed for Indian legal documents. The 
                ▼
         Custom Rule Engine
        GST · DPDP · ICA
-```
 
 ## Database
 
