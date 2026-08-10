@@ -41,6 +41,8 @@ An AI-powered contract analysis system designed for Indian legal documents. The 
 
 ## System Architecture
 
+''''text
+
 ┌─────────────────────────────────────┐
 │          Frontend                   │
 │      HTML / CSS / JavaScript        │
@@ -61,7 +63,7 @@ An AI-powered contract analysis system designed for Indian legal documents. The 
                │           │
                ▼           ▼
         ┌────────────┐  ┌──────────────┐
-        │   MySQL    │  │  OpenAI API  │
+        │   MySQL    │  │  Gemini API  │
         │  Database  │  │ AI Analysis  │
         └────────────┘  └──────────────┘
                │
